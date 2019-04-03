@@ -9,7 +9,7 @@
 import Foundation
 
 class APIManager {
-    let DataURL = ""
+    let DataURL = "https://api.github.com/search/repositories?q=created:>2017-10-22&sort=stars&order=desc"
     
     // Get trending data for last 30 days from github
     func getTrending(completion: @escaping (_ trending: TrendingModel?, _ error: Error?) -> Void) {
@@ -30,6 +30,7 @@ class APIManager {
     
 }
 
+// Extension for APIManger so we can show clear details
 extension APIManager {
     private func getJSONFromURL(urlString: String, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         guard let url = URL(string: urlString) else {
