@@ -7,6 +7,8 @@
 //
 import UIKit
 
+private let apiManager = APIManager()
+
 // MARK: - UITableView Data Source
 
 extension TrendingViewController : UITableViewDataSource {
@@ -44,3 +46,29 @@ extension TrendingViewController : UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }// end extension TrendingViewController : UITableViewDelegate
+
+
+// MARK: - UIViewController
+extension TrendingViewController {
+    
+//    private func updateLabels() {
+//        guard let windViewModel = windViewModel else { return }
+//        locationLabel.text = windViewModel.locationString
+//        windSpeedLabel.text = windViewModel.windSpeedString
+//        windDirectionLabel.text = windViewModel.windDegString
+//        coordLabel.text = windViewModel.coordString
+//    }
+    
+     func getTrending() {
+        apiManager.getTrending() { (trending, error) in
+            if let error = error {
+                print("Get trending error: \(error.localizedDescription)")
+                return
+            }
+            guard let trending = trending  else { return }
+            self.searchResult = trending
+            print("Current Trending Object:")
+            print(trending)
+        }
+    }
+}

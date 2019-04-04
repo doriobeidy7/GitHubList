@@ -15,9 +15,9 @@ struct TrendingViewModel{
     
     private(set) var name = ""
     private(set) var description = ""
-    private(set) var ownerImage = ""
-    private(set) var ownerName = ""
-    private(set) var starsNumber = ""
+//    private(set) var ownerImage = URL("")
+    private(set) var full_name = ""
+    private(set) var stargazers_count = 0
     
     init(trendingModel: TrendingModel) {
       
@@ -30,9 +30,9 @@ struct TrendingViewModel{
         
         name = setNameString(trendingModel: trendingModel)
         description = setDescriptionString(trendingModel: trendingModel)
-        ownerImage = setImageLink(trendingModel: trendingModel)
-        ownerName = setOwnerNameSring(trendingModel: trendingModel)
-        starsNumber = setStarNumberName(trendingModel: trendingModel)
+//        ownerImage = setImageLink(trendingModel: trendingModel)
+        full_name = setOwnerNameSring(trendingModel: trendingModel)
+        stargazers_count = setStarNumberName(trendingModel: trendingModel)
 
     }
 }
@@ -40,22 +40,25 @@ struct TrendingViewModel{
 extension TrendingViewModel {
     
     private func setNameString(trendingModel: TrendingModel) -> String {
-        return trendingModel.name
+        return trendingModel.items[0].name
     }
     
     private func setDescriptionString(trendingModel: TrendingModel) -> String {
-        return trendingModel.description
+        return trendingModel.items[0].description
     }
     
-    private func setImageLink(trendingModel: TrendingModel) -> String {
-        return trendingModel.ownerImage
-    }
+//    private func setImageLink(trendingModel: TrendingModel) -> URL {
+//        return trendingModel.items[0].avatar_url
+//    }
     
     private func setOwnerNameSring(trendingModel: TrendingModel) -> String {
-        return trendingModel.ownerName
+        return trendingModel.items[0].fullName
     }
     
-    private func setStarNumberName(trendingModel: TrendingModel) -> String {
-        return trendingModel.starsNumber
+    private func setStarNumberName(trendingModel: TrendingModel) -> Int {
+        return trendingModel.items[0].stargazersCount
     }
 }
+
+
+
