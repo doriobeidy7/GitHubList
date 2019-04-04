@@ -15,9 +15,10 @@ struct TrendingViewModel{
     
     private(set) var name = ""
     private(set) var description = ""
-//    private(set) var ownerImage = URL("")
+    private(set) var ownerImage = ""
     private(set) var full_name = ""
     private(set) var stargazers_count = 0
+    private(set) var avatar_url = ""
     
     init(trendingModel: TrendingModel) {
       
@@ -30,7 +31,7 @@ struct TrendingViewModel{
         
         name = setNameString(trendingModel: trendingModel)
         description = setDescriptionString(trendingModel: trendingModel)
-//        ownerImage = setImageLink(trendingModel: trendingModel)
+        avatar_url = setAvatarString(trendingModel: trendingModel)
         full_name = setOwnerNameSring(trendingModel: trendingModel)
         stargazers_count = setStarNumberName(trendingModel: trendingModel)
 
@@ -47,9 +48,9 @@ extension TrendingViewModel {
         return trendingModel.items[0].description
     }
     
-//    private func setImageLink(trendingModel: TrendingModel) -> URL {
-//        return trendingModel.items[0].avatar_url
-//    }
+    private func setAvatarString(trendingModel: TrendingModel) -> String {
+        return trendingModel.items[0].owner.avatarUrl
+    }
     
     private func setOwnerNameSring(trendingModel: TrendingModel) -> String {
         return trendingModel.items[0].fullName
