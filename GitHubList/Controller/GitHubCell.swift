@@ -16,4 +16,5 @@ class GitHubCell: UITableViewCell {
     @IBOutlet weak var starsNbrLabel: UILabel!
     @IBOutlet weak var repoImageView: UIImageView!
     @IBOutlet weak var starsImageView: UIImageView!
+    
 }

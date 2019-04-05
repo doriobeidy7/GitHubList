@@ -104,6 +104,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descLabel" destination="mas-oQ-JRK" id="fUu-nk-iGd"/>
+                                            <outlet property="nameLabel" destination="qqa-y2-d0z" id="8Ar-2l-cfa"/>
                                             <outlet property="ownerNameLabel" destination="mXX-7Q-iLk" id="FwV-w2-M3o"/>
                                             <outlet property="repoImageView" destination="rww-es-PCT" id="5nS-zQ-Hrm"/>
                                             <outlet property="starsImageView" destination="dE9-SB-RXD" id="t94-j8-RvT"/>

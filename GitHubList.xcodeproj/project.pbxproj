@@ -18,6 +18,7 @@
 		824838782254CC9C0026882D /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824838772254CC9C0026882D /* TrendingViewModel.swift */; };
 		8248387A2254CD0D0026882D /* TrendingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824838792254CD0D0026882D /* TrendingModel.swift */; };
 		824838812254E3D90026882D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824838802254E3D90026882D /* APIManager.swift */; };
+		82483885225799920026882D /* GlobalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82483884225799920026882D /* GlobalExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		824838772254CC9C0026882D /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
 		824838792254CD0D0026882D /* TrendingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingModel.swift; sourceTree = "<group>"; };
 		824838802254E3D90026882D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		82483884225799920026882D /* GlobalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				824838742254CB6A0026882D /* TrendingViewExtension.swift */,
+				82483884225799920026882D /* GlobalExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				824838752254CB6A0026882D /* TrendingViewExtension.swift in Sources */,
 				8248386F2254C1B40026882D /* GitHubCell.swift in Sources */,
 				824838782254CC9C0026882D /* TrendingViewModel.swift in Sources */,
+				82483885225799920026882D /* GlobalExtension.swift in Sources */,
 				8248387A2254CD0D0026882D /* TrendingModel.swift in Sources */,
 				8248385D2254AE4A0026882D /* TrendingViewController.swift in Sources */,
 			);

@@ -9,10 +9,11 @@
 import Foundation
 
 class APIManager {
-    let DataURL = "https://api.github.com/search/repositories?q=created:>2019-03-04&sort=stars&order=desc"
     
     // Get trending data for last 30 days from github
     func getTrending(completion: @escaping (_ trending: TrendingModel?, _ error: Error?) -> Void) {
+        let DataURL = "https://api.github.com/search/repositories?q=created:>2019-03-04&sort=stars&order=desc&page=1"
+        
         getJSONFromURL(urlString: DataURL) { (data, error) in
             
             guard let data = data, error == nil else {
@@ -25,7 +26,7 @@ class APIManager {
                     print("Failed to convert data")
                     return completion(nil, error)
                 }
-       
+                
                 return completion(trending, nil)
             })
         }
@@ -37,7 +38,7 @@ class APIManager {
 extension APIManager {
     private func getJSONFromURL(urlString: String, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         let escapedString = urlString.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
-
+        
         guard let url = URL(string: escapedString!) else {
             print("Error: Cannot create URL from string")
             return
@@ -54,7 +55,7 @@ extension APIManager {
                 print("Data is nil")
                 return completion(nil, error)
             }
-
+            
             completion(responseData, nil)
             
         }
@@ -62,13 +63,13 @@ extension APIManager {
     }
     
     private func createObjectWith(json: Data, completion: @escaping (_ data: TrendingModel?, _ error: Error?) -> Void) {
-       
-        do {
         
+        do {
+            
             let decoder = JSONDecoder()
-    
+            
             let response = try decoder.decode(TrendingModel.self, from: json)
-
+            
             return completion(response, nil)
             
         } catch let error {

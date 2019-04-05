@@ -38,16 +38,5 @@ struct Items: Codable {
         case stargazersCount = "stargazers_count"
         case owner = "owner"
     }
-    
-  
-//    init(from decoder: Decoder) throws {
-//
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//
-//        name = try values.decodeIfPresent(String.self, forKey: .name)
-//        description = try values.decodeIfPresent(String.self, forKey: .description)
-//        stargazersCount = try values.decodeIfPresent(Int.self, forKey: .stargazersCount)
-//        fullName = try values.decodeIfPresent(String.self, forKey: .fullName)
-//        owner = try values.decodeIfPresent([String:String].self, forKey: .owner)
-//    }
+
 }
