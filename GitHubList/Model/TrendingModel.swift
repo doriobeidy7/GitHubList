@@ -10,7 +10,7 @@ import UIKit
 
 
 struct TrendingModel: Codable {
-    let items: [Items]
+    var items: [Items]
     
 }
 struct Owner: Codable {
@@ -21,8 +21,6 @@ struct Owner: Codable {
     }
     
 }
-
-
 
 struct Items: Codable {
     let name: String!

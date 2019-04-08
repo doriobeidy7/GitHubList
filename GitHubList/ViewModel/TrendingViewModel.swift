@@ -8,27 +8,46 @@
 
 import UIKit
 
+
+//protocol to handle data and error
+protocol TrendingViewModelDelegate: class {
+    func didRecieveDataUpdate(data: TrendingModel)
+    func didFailDataUpdateWithError(error: Error)
+}
+
+
+
+
 //// MARK: - View Model
 class TrendingViewModel: NSObject{
     
-    let trendingModel: TrendingModel
+    private let apiManager = APIManager()
+    
+    //Handling data using delegate
+    weak var delegate: TrendingViewModelDelegate?
     
     
-    private(set) var items = [Items]()
+    private func handleError(error: Error) {}
     
-    init(trendingModel: TrendingModel) {
+    func setDataWithResponse(response: TrendingModel) {
+        delegate?.didRecieveDataUpdate(data: response)
+    }
+    
+    
+    
+    func getTrending(page: Int) {
         
-        self.trendingModel = trendingModel
-        
+        apiManager.getTrending(page: String(page)){ (trending, error) in
+            if let error = error {
+                print("Get trending error: \(error.localizedDescription)")
+                return
+            }
+            guard  let trending = trending  else { return }
+            
+            self.setDataWithResponse(response: trending)
+        }
     }
     
 }
-
-extension TrendingViewModel {
-    private func setItems(trendingModel: TrendingModel) -> [Any] {
-        return trendingModel.items
-    }
-}
-
 
 

@@ -60,3 +60,23 @@ extension Date {
     }
 }
 
+extension UITableView {
+    
+    func tableViewScrollToBottom(animated: Bool, rowNumber: Int) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
+            
+            let numberOfSections = self.numberOfSections
+            var numberOfRows = 0
+            
+            if numberOfSections != 0 {
+                numberOfRows = self.numberOfRows(inSection: numberOfSections-1)
+            }
+            if numberOfRows > 0 {
+                
+                let indexPath = IndexPath(row: rowNumber, section: (numberOfSections-1))
+                self.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: animated)
+            }
+        }
+    }
+    
+}

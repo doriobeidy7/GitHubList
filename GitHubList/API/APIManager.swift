@@ -12,15 +12,14 @@ class APIManager {
     
     let basicUrl = "https://api.github.com/"
     let createdDate = "2019-03-04"
-    let page = "0"
     
     let currentDate: Date = Date()
-   
+    
     
     // Get trending data for last 30 days from github
-    func getTrending(completion: @escaping (_ trending: TrendingModel?, _ error: Error?) -> Void) {
+    func getTrending(page: String, completion: @escaping (_ trending: TrendingModel?, _ error: Error?) -> Void) {
         let thirtyDaysBeforeToday = Calendar.current.date(byAdding: .day, value: -30, to: currentDate)!
-   
+        
         let date =  thirtyDaysBeforeToday.dateFormatted(with: "yyyy-MM-dd", date: thirtyDaysBeforeToday)
         
         let DataURL = "\(basicUrl)search/repositories?q=created:>\(date)&sort=stars&order=desc&page=\(page)"

@@ -10,26 +10,33 @@ import UIKit
 
 class TrendingViewController: UIViewController {
     
-    private(set) var trendingViewModel: TrendingViewModel?
+    
+    var rowNumber = 0
+    var dataSource = TrendingViewModel()
+    
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    var searchResult: TrendingModel? {
+    var dataArray = [Items]() {
         didSet {
-            guard let searchResult = searchResult else { return }
-            trendingViewModel = TrendingViewModel.init(trendingModel: searchResult)
+            //Reload tableview after receiving data using StoreTableViewDataModelDelegate protocol to get data.
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+                
+                self.tableView?.reloadData()
+                self.tableView.tableViewScrollToBottom(animated: true, rowNumber: self.rowNumber)
+            })
             
-            DispatchQueue.main.async {
-                self.setUpTableView()
-                self.tableView.reloadData()
-            }
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getTrending()
+        
+        setUpTableView()
+        loadData()
     }
+    
 }
-
